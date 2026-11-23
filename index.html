@@ -6,6 +6,14 @@
 <title>Serop Kizirian Development</title>
 <meta name="description" content="Lifestyle luxury villas minutes from Saida. Over 69 years of experience in real estate development. Offices in Saida and Chehime.">
 <meta name="theme-color" content="#24475e">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Serop Kizirian Development">
+<meta property="og:title" content="Serop Kizirian Development | Lifestyle luxury villas near Saida">
+<meta property="og:description" content="Villas you can customize, minutes from Saida, with a two-year payment plan. Over 69 years in real estate development.">
+<meta property="og:image" content="assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/mark-navy.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +27,36 @@
     try { seen = sessionStorage.getItem("sk-intro") === "1"; } catch (e) {}
     var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!seen && !still) h.classList.add("show-intro", "intro-playing");
+    var lang = "en";
+    try { lang = localStorage.getItem("sk-lang") === "ar" ? "ar" : "en"; } catch (e) {}
+    if (lang === "ar") {
+      h.lang = "ar"; h.dir = "rtl";
+      var f = document.createElement("link"); f.rel = "stylesheet"; f.id = "ar-fonts";
+      f.href = "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Kufi+Arabic:wght@400;500&display=swap";
+      document.head.appendChild(f);
+    }
   })();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "Serop Kizirian Development",
+  "description": "Lifestyle luxury villas near Saida. Over 69 years of experience in real estate development.",
+  "telephone": ["+96181309384", "+96176716617"],
+  "address": [
+    { "@type": "PostalAddress", "streetAddress": "Baasiri Street", "addressLocality": "Saida", "addressCountry": "LB" },
+    { "@type": "PostalAddress", "addressLocality": "Chehime", "addressCountry": "LB" }
+  ],
+  "sameAs": ["https://instagram.com/seropkiziriandevelopment"]
+}
+</script>
+<script>
+  /* Visit counter: Vercel Web Analytics, loaded only on the live site (enable Analytics in the Vercel project) */
+  if (!/claude\.ai|claudeusercontent|localhost|127\.0\.0\.1/.test(location.hostname)) {
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    var va = document.createElement("script"); va.defer = true; va.src = "/_vercel/insights/script.js"; document.head.appendChild(va);
+  }
 </script>
 </head>
 <body>
@@ -71,6 +108,11 @@
       <a href="#about" data-go="about" data-tab="about">About us</a>
       <a href="#contact" data-go="contact" data-tab="contact">Contact us</a>
     </nav>
+    <a class="saved-link" href="#saved" data-go="saved" aria-label="Saved projects">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.1A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.8c0 5.5-7.5 10.1-7.5 10.1Z"/></svg>
+      <span data-saved-count>0</span>
+    </a>
+    <button class="lang" type="button" data-lang-toggle lang="ar">عربي</button>
     <button class="btn small" type="button" data-visit>Book a site visit</button>
   </div>
 </header>
@@ -95,12 +137,54 @@
       <div class="hero-media frame" data-img="villa-aerial" data-eager></div>
     </div>
 
+    <div class="finder-wrap shell">
+      <form class="finder" data-finder aria-label="Find your villa">
+        <label class="finder-field" for="find-goal"><span>I'm looking to</span>
+          <select id="find-goal" name="goal">
+            <option value="buy">Buy a villa</option>
+            <option value="customize">Customize a villa</option>
+            <option value="invest">Invest in a villa</option>
+          </select>
+        </label>
+        <label class="finder-field" for="find-area"><span>Location</span>
+          <select id="find-area" name="area" data-area-options>
+            <option value="all">All locations</option>
+          </select>
+        </label>
+        <button class="btn" type="submit">Find villas</button>
+      </form>
+    </div>
+
     <div class="facts shell" role="list">
       <div role="listitem"><strong>69+</strong><span>years in real estate development</span></div>
       <div role="listitem"><strong>2 years</strong><span>flexible payment plan</span></div>
       <div role="listitem"><strong>2 offices</strong><span>Saida and Chehime</span></div>
       <div role="listitem"><strong data-count-projects>4</strong><span>project locations</span></div>
     </div>
+
+    <section class="band shell" aria-labelledby="help-title">
+      <h2 class="display l" id="help-title">How we can help</h2>
+      <div class="services">
+        <article class="service">
+          <svg aria-hidden="true" viewBox="0 0 48 48"><path d="M6 40h36M10 40V22l14-11 14 11v18M20 40V28h8v12"/></svg>
+          <h3>Buy a villa</h3>
+          <p>Choose from our villas around Saida and the Chouf, and pay over two years while we build.</p>
+          <a class="link" href="#projects" data-go="projects">See the projects</a>
+        </article>
+        <article class="service">
+          <svg aria-hidden="true" viewBox="0 0 48 48"><path d="M8 40h32M12 40V18h24v22M12 26h24M22 18v22M30 10l6 8M18 10l-6 8M18 10h12"/></svg>
+          <h3>Customize your villa</h3>
+          <p>Shape the layout details, materials and finishes with our interior designers, from A to Z.</p>
+          <a class="link" href="#design" data-go="design">Design your villa</a>
+        </article>
+        <article class="service">
+          <svg aria-hidden="true" viewBox="0 0 48 48"><path d="M4 36c8-6 16-6 20-2s12 4 20-2M8 28l8-10 6 6 8-12 10 14M30 12v-6h6"/></svg>
+          <h3>Own land?</h3>
+          <p>Have a plot around Saida? Sell it to us, or talk to us about developing it together.</p>
+          <a class="link" href="#sell" data-go="sell">Tell us about your land</a>
+        </article>
+      </div>
+    </section>
 
     <section class="band shell" aria-labelledby="home-projects">
       <div class="head-row">
@@ -115,7 +199,10 @@
       <div class="wide-copy">
         <h2 class="display l" id="custom-title">Customize your villa from A to Z</h2>
         <p>Pick the finishes, materials and layout details with the help of our experienced interior designers. The villa is built to your choices, not to a catalogue.</p>
-        <button class="btn" type="button" data-visit>Book a site visit</button>
+        <div class="actions">
+          <a class="btn" href="#design" data-go="design">Design your villa</a>
+          <button class="btn line" type="button" data-visit data-goal="customize">Book a site visit</button>
+        </div>
       </div>
     </section>
 
@@ -126,6 +213,23 @@
         <div><h3>A two-year payment plan</h3><p>Spread the price over two years in comfortable installments.</p></div>
         <div><h3>Finishes you choose</h3><p>Floors, kitchens, bathrooms and lighting, selected with our designers.</p></div>
         <div><h3>A quiet, premium location</h3><p>Calm neighbourhoods a short drive from Saida.</p></div>
+      </div>
+    </section>
+
+    <section class="land" id="sell" aria-labelledby="land-title">
+      <div class="shell band land-grid">
+        <div class="land-copy">
+          <h2 class="display l" id="land-title">Own land around Saida?</h2>
+          <p class="lead">Tell us about your plot in one minute. Our team will call you to visit the land and talk through your options.</p>
+          <ul class="ticks">
+            <li>Sell your land directly to a developer</li>
+            <li>Or develop it together and share in the villas built on it</li>
+            <li>A site visit and an honest conversation before anything is signed</li>
+          </ul>
+        </div>
+        <div class="land-card">
+          <div data-land-slot></div>
+        </div>
       </div>
     </section>
   </section>
@@ -139,8 +243,20 @@
       </div>
     </div>
     <div class="shell band">
-      <div class="rows" data-rows></div>
+      <div class="filters" role="group" aria-label="Filter projects" data-filters></div>
+      <div class="rows" data-rows aria-live="polite"></div>
     </div>
+    <section class="map-band" aria-labelledby="map-title">
+      <div class="shell band map-grid">
+        <div class="map-copy">
+          <h2 class="display l" id="map-title">Where we build</h2>
+          <p class="muted">Our projects sit in the hills around Saida and in the Chouf, all within a short drive of our offices.</p>
+          <ul class="map-legend" data-map-legend></ul>
+          <p class="fine-note">Locations on the map are approximate. Open any project in Google Maps for directions.</p>
+        </div>
+        <div class="map-wrap" data-map></div>
+      </div>
+    </section>
   </section>
 
   <!-- ================= PROJECT DETAIL ================= -->
@@ -152,6 +268,50 @@
     <div class="shell band" data-gallery-wrap hidden>
       <h2 class="display m" data-gallery-title>Gallery</h2>
       <div class="gallery" data-gallery></div>
+    </div>
+    <div class="shell band more-projects" data-more-wrap>
+      <h2 class="display l">More projects</h2>
+      <div class="cards three" data-more></div>
+    </div>
+  </section>
+
+  <!-- ================= DESIGN YOUR VILLA ================= -->
+  <section class="view" id="view-design" aria-labelledby="design-title" hidden>
+    <div class="page-head">
+      <div class="shell">
+        <h1 class="display xl" id="design-title">Design your villa</h1>
+        <p class="lead">Pick the look of your villa. Your choices go to our interior designers as a ready brief.</p>
+      </div>
+    </div>
+    <div class="shell band studio">
+      <div class="studio-preview">
+        <div class="preview-stage" data-preview aria-hidden="true"></div>
+        <div class="board" aria-label="Your material board">
+          <div class="swatch-card"><span class="swatch" data-swatch="facade"></span><small>Facade</small><strong data-pick-label="facade"></strong></div>
+          <div class="swatch-card"><span class="swatch" data-swatch="floor"></span><small>Floors</small><strong data-pick-label="floor"></strong></div>
+          <div class="swatch-card"><span class="swatch" data-swatch="kitchen"></span><small>Kitchen</small><strong data-pick-label="kitchen"></strong></div>
+          <div class="swatch-card"><span class="swatch" data-swatch="frames"></span><small>Window frames</small><strong data-pick-label="frames"></strong></div>
+        </div>
+      </div>
+      <form class="studio-form" data-studio novalidate>
+        <fieldset class="opt"><legend>Facade</legend><div class="opt-row" data-opts="facade"></div></fieldset>
+        <fieldset class="opt"><legend>Window frames</legend><div class="opt-row" data-opts="frames"></div></fieldset>
+        <fieldset class="opt"><legend>Floors</legend><div class="opt-row" data-opts="floor"></div></fieldset>
+        <fieldset class="opt"><legend>Kitchen</legend><div class="opt-row" data-opts="kitchen"></div></fieldset>
+        <fieldset class="opt"><legend>Outdoor</legend><div class="opt-row" data-opts="outdoor"></div></fieldset>
+        <fieldset class="opt"><legend>Bedrooms</legend><div class="opt-row" data-opts="bedrooms"></div></fieldset>
+        <fieldset class="opt"><legend>Extras you'd like</legend><div class="opt-row" data-opts="extras"></div></fieldset>
+        <div class="brief">
+          <h2 class="display m">Send your brief</h2>
+          <p class="muted">Our designers review it with you during your site visit. Options and prices are confirmed together.</p>
+          <div class="two">
+            <div class="field"><label for="studio-name">Full name</label><input id="studio-name" name="fullname" autocomplete="name"></div>
+            <div class="field"><label for="studio-phone">Phone number</label><input id="studio-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+961"></div>
+          </div>
+          <p class="form-msg" role="status"></p>
+          <a class="btn" data-studio-send target="_blank" rel="noopener">Send my villa brief on WhatsApp</a>
+        </div>
+      </form>
     </div>
   </section>
 
@@ -243,6 +403,7 @@
       <a href="#projects" data-go="projects">Projects</a>
       <a href="#about" data-go="about">About us</a>
       <a href="#contact" data-go="contact">Contact us</a>
+      <a href="#design" data-go="design">Design your villa</a>
     </nav>
     <div class="foot-contact" data-foot-contact></div>
   </div>
@@ -275,6 +436,7 @@
 </a>
 
 <script src="assets/js/data.js"></script>
+<script src="assets/js/i18n.js"></script>
 <script src="assets/js/site.js"></script>
 </body>
 </html>
